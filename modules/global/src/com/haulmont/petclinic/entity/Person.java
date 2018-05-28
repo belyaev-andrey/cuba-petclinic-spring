@@ -1,25 +1,30 @@
 package com.haulmont.petclinic.entity;
 
 import javax.persistence.MappedSuperclass;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Lob;
-import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
 import com.haulmont.cuba.core.entity.Versioned;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.entity.Updatable;
 import com.haulmont.cuba.core.entity.Creatable;
 
 @MappedSuperclass
-public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
-    private static final long serialVersionUID = 3471875190195059470L;
+public class Person extends BaseIntIdentityIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
+    private static final long serialVersionUID = 4193533661985379122L;
 
     @NotNull
     @Lob
-    @Column(name = "NAME", nullable = false)
-    protected String name;
+    @Column(name = "FIRST_NAME", nullable = false)
+    protected String firstName;
+
+    @NotNull
+    @Lob
+    @Column(name = "LAST_NAME", nullable = false)
+    protected String lastName;
 
     @Column(name = "CREATE_TS")
     protected Date createTs;
@@ -119,13 +124,20 @@ public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, S
         return deletedBy;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <metadata xmlns="http://schemas.haulmont.com/cuba/metadata.xsd">
     <metadata-model namespace="cubapetclinic"
-                    root-package="com.haulmont.petclinic"/>
+                    root-package="com.haulmont.petclinic">
+    </metadata-model>
 </metadata>
