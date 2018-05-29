@@ -13,7 +13,8 @@ import com.haulmont.cuba.core.entity.Updatable;
 import com.haulmont.cuba.core.entity.Creatable;
 
 @MappedSuperclass
-public class Person extends BaseIntIdentityIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
+public class Person extends BaseIntIdentityIdEntity
+        implements Versioned, SoftDelete, Updatable, Creatable {
     private static final long serialVersionUID = 4193533661985379122L;
 
     @NotNull

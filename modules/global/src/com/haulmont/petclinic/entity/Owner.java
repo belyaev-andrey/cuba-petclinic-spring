@@ -10,7 +10,9 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.Index;
+import com.haulmont.chile.core.annotations.NamePattern;
 
+@NamePattern("%s %s|firstName,lastName")
 @Table(name = "CUBAPETCLINIC_OWNER", indexes = {
     @Index(name = "IDX_CUBAPETCLINIC_OWNER", columnList = "LAST_NAME")
 })

@@ -23,7 +23,7 @@ import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
 import javax.persistence.Index;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@NamePattern("Vet  |")
+@NamePattern("Vet %s %s |firstName,lastName")
 @Table(name = "CUBAPETCLINIC_VET", indexes = {
     @Index(name = "IDX_CUBAPETCLINIC_VET", columnList = "LAST_NAME")
 })
