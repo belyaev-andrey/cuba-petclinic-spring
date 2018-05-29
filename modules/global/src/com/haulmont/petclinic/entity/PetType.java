@@ -11,9 +11,7 @@ import com.haulmont.cuba.core.entity.Updatable;
 import com.haulmont.cuba.core.entity.Creatable;
 import javax.persistence.UniqueConstraint;
 
-@Table(name = "CUBAPETCLINIC_PET_TYPE", uniqueConstraints = {
-    @UniqueConstraint(name = "IDX_CUBAPETCLINIC_PET_TYPE_UNQ", columnNames = {"NAME"})
-})
+@Table(name = "CUBAPETCLINIC_PET_TYPE")
 @Entity(name = "cubapetclinic$PetType")
 public class PetType extends NamedEntity {
     private static final long serialVersionUID = -4999419471911103408L;

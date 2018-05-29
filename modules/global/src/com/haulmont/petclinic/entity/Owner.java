@@ -1,6 +1,8 @@
 package com.haulmont.petclinic.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Lob;
@@ -10,11 +12,12 @@ import javax.validation.constraints.Pattern;
 import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.Index;
+
 import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s %s|firstName,lastName")
 @Table(name = "CUBAPETCLINIC_OWNER", indexes = {
-    @Index(name = "IDX_CUBAPETCLINIC_OWNER", columnList = "LAST_NAME")
+        @Index(name = "IDX_CUBAPETCLINIC_OWNER", columnList = "LAST_NAME")
 })
 @Entity(name = "cubapetclinic$Owner")
 public class Owner extends Person {

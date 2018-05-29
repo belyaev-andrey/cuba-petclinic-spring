@@ -57,7 +57,7 @@ public class Visit extends BaseIntIdentityIdEntity implements Versioned, SoftDel
     protected String createdBy;
 
     @Version
-    @Column(name = "VERSION", nullable = false)
+    @Column(name = "VERSION", nullable = false, columnDefinition = "integer not null default 1")
     protected Integer version;
 
     public void setPet(Pet pet) {

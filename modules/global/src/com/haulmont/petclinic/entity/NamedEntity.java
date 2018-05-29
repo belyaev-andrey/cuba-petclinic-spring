@@ -17,7 +17,6 @@ public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, S
     private static final long serialVersionUID = 3471875190195059470L;
 
     @NotNull
-    @Lob
     @Column(name = "NAME", nullable = false)
     protected String name;
 
@@ -28,7 +27,7 @@ public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, S
     protected String createdBy;
 
     @Version
-    @Column(name = "VERSION", nullable = false)
+    @Column(name = "VERSION", nullable = false, columnDefinition = "integer not null default 1")
     protected Integer version;
 
     @Column(name = "UPDATE_TS")

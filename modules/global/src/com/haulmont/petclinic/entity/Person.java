@@ -18,12 +18,10 @@ public class Person extends BaseIntIdentityIdEntity
     private static final long serialVersionUID = 4193533661985379122L;
 
     @NotNull
-    @Lob
     @Column(name = "FIRST_NAME", nullable = false)
     protected String firstName;
 
     @NotNull
-    @Lob
     @Column(name = "LAST_NAME", nullable = false)
     protected String lastName;
 
@@ -34,7 +32,7 @@ public class Person extends BaseIntIdentityIdEntity
     protected String createdBy;
 
     @Version
-    @Column(name = "VERSION", nullable = false)
+    @Column(name = "VERSION", nullable = false, columnDefinition = "integer not null default 1")
     protected Integer version;
 
     @Column(name = "UPDATE_TS")
