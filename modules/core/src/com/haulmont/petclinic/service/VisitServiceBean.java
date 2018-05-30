@@ -25,6 +25,7 @@ public class VisitServiceBean implements VisitService {
     public List<Visit> findByPetId(Integer petId) {
         return persistence.getEntityManager()
                 .createQuery("select v from cubapetclinic$Visit v where v.pet.id = :id", Visit.class)
-                .setParameter("id", petId).getResultList();
+                .setParameter("id", petId)
+                .getResultList();
     }
 }

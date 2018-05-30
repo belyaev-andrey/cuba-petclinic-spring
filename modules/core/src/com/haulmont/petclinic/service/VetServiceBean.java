@@ -20,6 +20,7 @@ public class VetServiceBean implements VetService {
     @Transactional(readOnly = true)
     public Collection<Vet> findAll() {
         return persistence.getEntityManager()
-                .createQuery("select v from cubapetclinic$Vet v", Vet.class).getResultList();
+                .createQuery("select v from cubapetclinic$Vet v", Vet.class)
+                .getResultList();
     }
 }
