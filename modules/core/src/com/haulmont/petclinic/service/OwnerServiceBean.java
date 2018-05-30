@@ -1,7 +1,10 @@
 package com.haulmont.petclinic.service;
 
 import com.haulmont.cuba.core.Persistence;
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.petclinic.entity.Owner;
+import com.haulmont.petclinic.entity.Vet;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,9 @@ public class OwnerServiceBean implements OwnerService {
     @Inject
     private Persistence persistence;
 
+    @Inject
+    private DataManager dataManager;
+
     @Override
     @Transactional(readOnly = true)
     public Collection<Owner> findByLastName(String lastName) {
@@ -24,12 +30,11 @@ public class OwnerServiceBean implements OwnerService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Owner findById(Integer id) {
-        return persistence.getEntityManager()
-                .createQuery("SELECT owner FROM cubapetclinic$Owner owner left join fetch owner.pets WHERE owner.id =:id", Owner.class)
-                .setParameter("id", id)
-                .getFirstResult();
+        LoadContext<Owner> owners = LoadContext.create(Owner.class)
+                .setId(id)
+                .setView("owner-with-pets");
+        return dataManager.load(owners);
     }
 
     @Override

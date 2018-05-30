@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <context:component-scan base-package="com.haulmont.petclinic"/>
+
+    <security:http pattern="/rest/feed/**"
+                   create-session="stateless"
+                   entry-point-ref="oauthAuthenticationEntryPoint"
+                   xmlns="http://www.springframework.org/schema/security">
+        <!-- Specify one or more protected URL patterns-->
+        <intercept-url pattern="/rest/feed/**" access="permitAll()"/>
+        <anonymous enabled="true"/>
+        <csrf disabled="true"/>
+        <cors configuration-source-ref="cuba_RestCorsSource"/>
+        <custom-filter ref="resourceFilter" before="PRE_AUTH_FILTER"/>
+        <custom-filter ref="cuba_AnonymousAuthenticationFilter" after="PRE_AUTH_FILTER"/>
+    </security:http>
+
+
+</beans>

@@ -1,3 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.haulmont.petclinic.entity.Vet"
+          extends="_minimal"
+          name="vet-specialities-view">
+        <property name="specialities"
+                  view="_minimal">
+        </property>
+    </view>
+    <view class="com.haulmont.petclinic.entity.Owner"
+          extends="_local"
+          name="owner-with-pets">
+        <property name="pets"
+                  view="_local">
+            <property name="type"
+                      view="_local"/>
+            <property name="visits"
+                      view="_local"/>
+        </property>
+    </view>
 </views>
