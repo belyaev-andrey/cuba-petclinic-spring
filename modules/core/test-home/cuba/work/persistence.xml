@@ -60,13 +60,17 @@
     <class>com.haulmont.petclinic.entity.Speciality</class>
     <class>com.haulmont.petclinic.entity.PetType</class>
     <class>com.haulmont.petclinic.entity.Pet</class>
+    <class>com.haulmont.petclinic.entity.Vet</class>
+    <class>com.haulmont.petclinic.entity.Person</class>
+    <class>com.haulmont.petclinic.entity.Owner</class>
+    <class>com.haulmont.petclinic.entity.Visit</class>
     <exclude-unlisted-classes/>
     <properties>
       <property name="eclipselink.cache.coordination.propagate-asynchronously" value="false"/>
       <property name="eclipselink.session-event-listener" value="com.haulmont.cuba.core.sys.persistence.EclipseLinkSessionEventListener"/>
       <property name="eclipselink.logging.logger" value="com.haulmont.cuba.core.sys.logging.EclipseLinkLog"/>
       <property name="eclipselink.cache.shared.default" value="false"/>
-      <property name="eclipselink.target-database" value="com.haulmont.cuba.core.sys.persistence.CubaHSQLPlatform"/>
+      <property name="eclipselink.target-database" value="com.haulmont.cuba.core.sys.persistence.CubaMySQLPlatform"/>
       <property name="javax.persistence.validation.mode" value="NONE"/>
       <property name="eclipselink.cache.coordination.protocol" value="com.haulmont.cuba.core.sys.entitycache.EntityCacheTransportManager"/>
       <property name="eclipselink.weaving" value="static"/>
