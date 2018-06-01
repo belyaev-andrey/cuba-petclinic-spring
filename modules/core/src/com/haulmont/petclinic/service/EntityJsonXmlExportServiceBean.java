@@ -3,18 +3,19 @@ package com.haulmont.petclinic.service;
 import com.haulmont.cuba.core.app.importexport.EntityImportExportService;
 import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.View;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.json.Json;
-import javax.json.stream.JsonParser;
-import javax.json.stream.JsonParser.Event;
-import java.io.Reader;
-import java.io.StringReader;
 import java.util.Collection;
 
 @Service(EntityJsonXmlExportService.NAME)
 public class EntityJsonXmlExportServiceBean implements EntityJsonXmlExportService {
+
+    private String defaultTagName = "entity";
 
     @Inject
     private EntityImportExportService importExportService;
@@ -34,41 +35,38 @@ public class EntityJsonXmlExportServiceBean implements EntityJsonXmlExportServic
         return jsonToXml(importExportService.exportEntitiesToJSON(entities), root);
     }
 
-    protected String jsonToXml(String json, String rootElement) {
-        StringBuilder sb = new StringBuilder(json.length());
-        Reader is = new StringReader(json);
-        JsonParser parser = Json.createParser(is);
-        if (parser.hasNext()) {
-            sb.append(parseValue(parser, parser.next()));
-        }
-        return sb.toString();
+    @Override
+    public String exportEntitiesToXML(Collection<? extends Entity> entities, String root, View view) {
+        return jsonToXml(importExportService.exportEntitiesToJSON(entities, view), root);
     }
 
-    private String parseValue(JsonParser parser, Event e) {
-        StringBuilder sb = new StringBuilder();
-        if (e == Event.KEY_NAME) {
-            String s = parser.getString();
-            sb.append(String.format("<%s>%s</%s>", s, parseValue(parser, parser.next()), s));
-        } else if (e == Event.START_ARRAY) {
-            sb.append("<list>");
-        } else if (e == Event.START_OBJECT) {
-            sb.append("<entity>");
-        } else if (e == Event.VALUE_FALSE
-                || e == Event.VALUE_TRUE
-                || e == Event.VALUE_NUMBER
-                || e == Event.VALUE_STRING
-                || e == Event.VALUE_NULL) {
-            return parser.getString();
-        } else if (e == Event.END_ARRAY) {
-            sb.append("</list>");
-        } else if (e == Event.END_OBJECT) {
-            sb.append("</entity>");
+    protected String jsonToXml(String jsonString, String rootElement) {
+        JSONArray json = new JSONArray(jsonString);
+        StringBuilder sb = new StringBuilder(jsonString.length());
+        sb.append(String.format("<%s>", rootElement));
+        for (Object aJson : json) {
+            String tagName = this.defaultTagName;
+            try {
+                JSONObject obj = (JSONObject)aJson;
+                Object entityClass = obj.get("_entityName");
+                if (entityClass != null){
+                    String[] name = entityClass.toString().split("\\$");
+                    tagName = name[name.length-1];
+                }
+            } catch (JSONException e) {
+                //OK, we don't get entity name so we will use default
+            }
+            sb.append(XML.toString(aJson, tagName));
         }
-        if (parser.hasNext()) {
-            return sb.append(parseValue(parser, parser.next())).toString();
-        } else {
-            return sb.toString();
-        }
+        return sb.append(String.format("</%s>", rootElement)).toString();
+    }
+
+    protected String getDefaultTagName() {
+        return defaultTagName;
+    }
+
+    protected void setDefaultTagName(String defaultTagName) {
+        this.defaultTagName = defaultTagName;
     }
 
 }

@@ -51,7 +51,7 @@ configure([globalModule, coreModule, guiModule, webModule]) {
     apply(plugin: 'cuba')
 
     dependencies {
-        compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.2')
+        compile('org.json:json:20180130')
         testCompile('junit:junit:4.12')
     }
 

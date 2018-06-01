@@ -15,5 +15,7 @@ public interface EntityJsonXmlExportService {
 
     String exportEntitiesToXML(Collection<? extends Entity> entities, String root);
 
+    String exportEntitiesToXML(Collection<? extends Entity> entities, String root, View view);
+
 
 }
