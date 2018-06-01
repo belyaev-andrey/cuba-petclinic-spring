@@ -1,20 +1,15 @@
 package com.haulmont.petclinic.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.haulmont.cuba.core.app.importexport.EntityImportExportService;
-import com.haulmont.petclinic.entity.Vet;
-import com.haulmont.petclinic.entity.Vets;
 import com.haulmont.petclinic.service.EntityJsonXmlExportService;
 import com.haulmont.petclinic.service.VetService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
-import java.io.IOException;
 
-@RestController
+@Controller
 @RequestMapping("/feed")
 public class VetController {
 
@@ -25,12 +20,12 @@ public class VetController {
     private EntityJsonXmlExportService importExportService;
 
     @GetMapping(value = { "/vets.json" }, produces = "application/json")
-    public String showJsonVetList() {
+    public @ResponseBody String showJsonVetList() {
         return importExportService.exportEntitiesToJSON(vetService.findAll());
     }
 
     @GetMapping(value = { "/vets.xml" }, produces = "application/xml")
-    public String showXmlVetList() {
+    public @ResponseBody String showXmlVetList() {
         return importExportService.exportEntitiesToXML(vetService.findAll(), "vets");
     }
 

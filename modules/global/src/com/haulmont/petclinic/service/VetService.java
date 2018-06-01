@@ -15,6 +15,4 @@ public interface VetService {
      * @return a <code>Collection</code> of <code>Vet</code>s
      */
     Collection<Vet> findAll();
-
-    String vetsToXml(Collection<Vet> vets);
 }
