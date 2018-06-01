@@ -18,6 +18,8 @@
                        value="com.haulmont.petclinic.service.VetService"/>
                 <entry key="cubapetclinic_VisitService"
                        value="com.haulmont.petclinic.service.VisitService"/>
+                <entry key="cubapetclinic_EntityXmlExportService"
+                       value="com.haulmont.petclinic.service.EntityJsonXmlExportService"/>
             </map>
         </property>
     </bean>

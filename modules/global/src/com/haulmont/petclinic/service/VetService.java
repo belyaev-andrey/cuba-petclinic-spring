@@ -16,4 +16,5 @@ public interface VetService {
      */
     Collection<Vet> findAll();
 
+    String vetsToXml(Collection<Vet> vets);
 }
