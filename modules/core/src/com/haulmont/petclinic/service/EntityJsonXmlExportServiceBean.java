@@ -34,41 +34,37 @@ public class EntityJsonXmlExportServiceBean implements EntityJsonXmlExportServic
         return jsonToXml(importExportService.exportEntitiesToJSON(entities), root);
     }
 
-    protected String jsonToXml(String json, String rootElement){
+    protected String jsonToXml(String json, String rootElement) {
         StringBuilder sb = new StringBuilder(json.length());
         Reader is = new StringReader(json);
         JsonParser parser = Json.createParser(is);
-        if (parser.hasNext()){
-            Event e = parser.next();
-            if (e == Event.KEY_NAME) {
-                String name = parser.getString();
-                sb.append(String.format("<%s>%s<%s/>", name, parseValue(parser, parser.next()), name));
-            } else if (e == Event.START_ARRAY ) {
-                sb.append(String.format("<%s>%s<%s/>", rootElement, parseValue(parser, parser.next()), rootElement));
-            } else if (e == Event.START_OBJECT) {
-                sb.append(parseValue(parser, parser.next()));
-            }
+        if (parser.hasNext()) {
+            sb.append(parseValue(parser, parser.next()));
         }
         return sb.toString();
     }
 
-    private String parseValue(JsonParser parser, Event e){
+    private String parseValue(JsonParser parser, Event e) {
         StringBuilder sb = new StringBuilder();
         if (e == Event.KEY_NAME) {
             String s = parser.getString();
-            sb.append(String.format("<%s>%s<%s/>", s, parseValue(parser, parser.next()), s));
+            sb.append(String.format("<%s>%s</%s>", s, parseValue(parser, parser.next()), s));
         } else if (e == Event.START_ARRAY) {
-            sb.append(parseValue(parser, parser.next()));
+            sb.append("<list>");
         } else if (e == Event.START_OBJECT) {
-            sb.append(parseValue(parser, parser.next()));
+            sb.append("<entity>");
         } else if (e == Event.VALUE_FALSE
                 || e == Event.VALUE_TRUE
                 || e == Event.VALUE_NUMBER
                 || e == Event.VALUE_STRING
                 || e == Event.VALUE_NULL) {
             return parser.getString();
+        } else if (e == Event.END_ARRAY) {
+            sb.append("</list>");
+        } else if (e == Event.END_OBJECT) {
+            sb.append("</entity>");
         }
-        if (parser.hasNext()){
+        if (parser.hasNext()) {
             return sb.append(parseValue(parser, parser.next())).toString();
         } else {
             return sb.toString();
