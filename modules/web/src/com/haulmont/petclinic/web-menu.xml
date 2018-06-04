@@ -2,7 +2,6 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-cubapetclinic"
           insertBefore="administration">
-        <item screen="GenericPage"/>
-        <item screen="screen"/>
+        <item screen="cubapetclinic$Owner.browse"/>
     </menu>
 </menu-config>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.haulmont.petclinic.web.owner.OwnerBrowse"
+        focusComponent="ownersTable"
+        lookupComponent="ownersTable"
+        messagesPack="com.haulmont.petclinic.web.owner">
+    <dsContext>
+        <collectionDatasource id="ownersDs"
+                              class="com.haulmont.petclinic.entity.Owner"
+                              view="owner-with-pets">
+            <query>
+                <![CDATA[
+                select e from cubapetclinic$Owner e order by e.firstName
+                ]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="ownersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="ownersTable"
+                datasource="ownersDs">
+            <properties include=".*"/>
+        </filter>
+        <dataGrid id="ownersTable"
+                  align="TOP_CENTER"
+                  datasource="ownersDs"
+                  reorderingAllowed="false"
+                  settingsEnabled="false"
+                  width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="refresh"/>
+            </actions>
+            <columns>
+                <column id="fullName"
+                        caption="Full Name"
+                        editable="false"/>
+                <column id="address"
+                        property="address"/>
+                <column id="city"
+                        property="city"/>
+                <column id="telephone"
+                        property="telephone"/>
+                <column id="petNames"
+                        caption="Pets"
+                        editable="false"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="ownersTable.create"/>
+                <button id="editBtn"
+                        action="ownersTable.edit"/>
+                <button id="removeBtn"
+                        action="ownersTable.remove"/>
+                <button id="refreshBtn"
+                        action="ownersTable.refresh"/>
+            </buttonsPanel>
+        </dataGrid>
+    </layout>
+</window>

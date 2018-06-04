@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.petclinic.web.owner.OwnerView"
+        datasource="ownerDs"
+        messagesPack="com.haulmont.petclinic.web.owner">
+    <dsContext>
+        <datasource id="ownerDs"
+                    class="com.haulmont.petclinic.entity.Owner"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <vbox spacing="true">
+            <groupBox caption="Owner Information"
+                      spacing="true">
+                <grid spacing="true"
+                      width="100%">
+                    <columns count="2"/>
+                    <rows>
+                        <row>
+                            <label id="ownerLabel"
+                                   align="MIDDLE_LEFT"
+                                   value="Name"/>
+                            <label id="ownerValue"
+                                   datasource="ownerDs"
+                                   property="firstName"/>
+                        </row>
+                        <row>
+                            <label id="addressLabel"
+                                   align="MIDDLE_LEFT"
+                                   value="Address"/>
+                            <label id="addressValue"
+                                   align="MIDDLE_LEFT"
+                                   datasource="ownerDs"
+                                   property="address"/>
+                        </row>
+                        <row>
+                            <label id="cityLabel"
+                                   align="MIDDLE_LEFT"
+                                   value="City"/>
+                            <label id="cityValue"
+                                   align="MIDDLE_LEFT"
+                                   datasource="ownerDs"
+                                   property="city"/>
+                        </row>
+                        <row>
+                            <label id="phoneLabel"
+                                   align="MIDDLE_LEFT"
+                                   value="Telephone"/>
+                            <label id="phoneValue"
+                                   align="MIDDLE_LEFT"
+                                   datasource="ownerDs"
+                                   property="telephone"/>
+                        </row>
+                    </rows>
+                </grid>
+            </groupBox>
+        </vbox>
+    </layout>
+</window>

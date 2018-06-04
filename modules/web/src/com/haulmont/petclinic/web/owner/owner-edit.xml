@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.petclinic.web.owner.OwnerEdit"
+        datasource="ownerDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.petclinic.web.owner">
+    <dsContext>
+        <datasource id="ownerDs"
+                    class="com.haulmont.petclinic.entity.Owner"
+                    view="owner-with-pets"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="500"
+                width="400"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="ownerDs"
+                    width="400px">
+            <column width="250px">
+                <field property="firstName"/>
+                <field property="lastName"/>
+                <field property="address"
+                       rows="5"/>
+                <field property="city"
+                       rows="5"/>
+                <field property="telephone"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               height="40px"
+               screen="editWindowActions"
+               width="400px"/>
+    </layout>
+</window>

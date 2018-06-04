@@ -10,6 +10,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.persistence.OneToMany;
 import javax.persistence.Index;
 
@@ -17,7 +18,7 @@ import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s %s|firstName,lastName")
 @Table(name = "CUBAPETCLINIC_OWNER", indexes = {
-        @Index(name = "IDX_CUBAPETCLINIC_OWNER", columnList = "LAST_NAME")
+    @Index(name = "IDX_CUBAPETCLINIC_OWNER", columnList = "LAST_NAME")
 })
 @Entity(name = "cubapetclinic$Owner")
 public class Owner extends Person {
@@ -50,6 +51,9 @@ public class Owner extends Person {
         return pets;
     }
 
+    public String getPetNames() {
+        return pets.stream().map(Pet::getName).collect(Collectors.joining(", "));
+    }
 
     public void setAddress(String address) {
         this.address = address;
