@@ -18,4 +18,30 @@
                       view="_local"/>
         </property>
     </view>
+    <view class="com.haulmont.petclinic.entity.Pet"
+          extends="_local"
+          name="pet-create">
+        <property name="type"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+        <property name="owner"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.petclinic.entity.Pet"
+          extends="_local"
+          name="pet-view">
+        <property name="type"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.petclinic.entity.Visit"
+          extends="_local"
+          name="visit-edit">
+        <property name="pet"
+                  view="_minimal">
+            <property name="type"
+                      view="_minimal"/>
+            <property name="name"/>
+        </property>
+    </view>
 </views>

@@ -1,0 +1,16 @@
+@import "halo-defaults";
+@import "com.haulmont.petclinic/halo-ext-defaults";
+@import "app-components";
+@import "com.haulmont.petclinic/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+  
+  @include com_haulmont_petclinic-halo-ext;
+
+  .pet-grid .v-grid-body .v-grid-cell {
+    height: 78px;
+  }
+
+}

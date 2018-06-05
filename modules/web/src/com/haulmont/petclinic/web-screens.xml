@@ -7,4 +7,8 @@
             template="com/haulmont/petclinic/web/owner/owner-view.xml"/>
     <screen id="cubapetclinic$Owner.edit"
             template="com/haulmont/petclinic/web/owner/owner-edit.xml"/>
+    <screen id="cubapetclinic$Pet.edit"
+            template="com/haulmont/petclinic/web/pet/pet-edit.xml"/>
+    <screen id="cubapetclinic$Visit.edit"
+            template="com/haulmont/petclinic/web/visit/visit-edit.xml"/>
 </screen-config>

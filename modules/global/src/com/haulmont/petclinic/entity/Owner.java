@@ -1,20 +1,18 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.chile.core.model.utils.InstanceUtils;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Lob;
-import javax.validation.constraints.Digits;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.persistence.OneToMany;
-import javax.persistence.Index;
-
-import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s %s|firstName,lastName")
 @Table(name = "CUBAPETCLINIC_OWNER", indexes = {
@@ -79,5 +77,7 @@ public class Owner extends Person {
         return telephone;
     }
 
-
+    public String getFullName(){
+        return InstanceUtils.getInstanceName(this);
+    }
 }

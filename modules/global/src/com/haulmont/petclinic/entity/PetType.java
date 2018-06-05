@@ -1,16 +1,11 @@
 package com.haulmont.petclinic.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Version;
-import com.haulmont.cuba.core.entity.Versioned;
-import com.haulmont.cuba.core.entity.SoftDelete;
-import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
-import javax.persistence.UniqueConstraint;
 
+@NamePattern("%s|name")
 @Table(name = "CUBAPETCLINIC_PET_TYPE")
 @Entity(name = "cubapetclinic$PetType")
 public class PetType extends NamedEntity {

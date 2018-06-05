@@ -1,16 +1,16 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.MappedSuperclass;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
 import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
-import com.haulmont.cuba.core.entity.Versioned;
+import com.haulmont.cuba.core.entity.Creatable;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
+import com.haulmont.cuba.core.entity.Versioned;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @MappedSuperclass
 public class Person extends BaseIntIdentityIdEntity
@@ -138,6 +138,5 @@ public class Person extends BaseIntIdentityIdEntity
     public String getLastName() {
         return lastName;
     }
-
 
 }

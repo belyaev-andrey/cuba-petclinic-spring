@@ -4,17 +4,15 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractLookup;
 import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.DataGrid;
 import com.haulmont.cuba.gui.components.ListComponent;
-import com.haulmont.cuba.gui.components.actions.EditAction;
 import com.haulmont.cuba.gui.components.actions.ItemTrackingAction;
 import com.haulmont.petclinic.entity.Owner;
+import org.slf4j.Logger;
 
 import javax.inject.Inject;
-import java.util.HashMap;
 import java.util.Map;
-import com.haulmont.cuba.gui.components.Component;
-import org.slf4j.Logger;
 
 public class OwnerBrowse extends AbstractLookup {
 
@@ -56,7 +54,7 @@ public class OwnerBrowse extends AbstractLookup {
 
             @Override
             public String getValue(DataGrid.ColumnGeneratorEvent<Owner> event) {
-                return event.getItem().getFirstName()+" "+event.getItem().getLastName();
+                return event.getItem().getFullName();
             }
 
             @Override
@@ -66,13 +64,10 @@ public class OwnerBrowse extends AbstractLookup {
         });
 
         DataGrid.ClickableTextRenderer renderer = ownersTable.createRenderer(DataGrid.ClickableTextRenderer.class);
-        renderer.setRendererClickListener(new DataGrid.RendererClickListener() {
-            @Override
-            public void onClick(DataGrid.RendererClickEvent event) {
-                Action action = ownersTable.getAction("details");
-                if (action != null) {
-                    action.actionPerform(event.getSource());
-                }
+        renderer.setRendererClickListener(event -> {
+            Action action = ownersTable.getAction("details");
+            if (action != null) {
+                action.actionPerform(event.getSource());
             }
         });
         fullName.setRenderer(renderer);

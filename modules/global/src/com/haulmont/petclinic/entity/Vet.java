@@ -1,26 +1,16 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.InheritanceType;
-import javax.persistence.Inheritance;
-import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
-import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import com.haulmont.cuba.core.entity.HasUuid;
-import javax.persistence.Column;
-import java.util.UUID;
-import java.util.Date;
-import javax.persistence.Version;
-import com.haulmont.cuba.core.entity.Versioned;
-import com.haulmont.cuba.core.entity.SoftDelete;
-import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
-import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
-import javax.persistence.Index;
+import javax.persistence.Table;
+import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamePattern("Vet %s %s |firstName,lastName")
@@ -47,4 +37,7 @@ public class Vet extends Person {
     }
 
 
+    public String getFullName(){
+        return String.format("%s %s", getFirstName(), getLastName());
+    }
 }

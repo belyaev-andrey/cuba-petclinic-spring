@@ -8,55 +8,118 @@
         <datasource id="ownerDs"
                     class="com.haulmont.petclinic.entity.Owner"
                     view="_local"/>
+        <collectionDatasource id="petsDs"
+                              class="com.haulmont.petclinic.entity.Pet"
+                              view="pet-view">
+            <query>
+                <![CDATA[
+                select e from cubapetclinic$Pet e
+where e.owner.id = :ds$ownerDs.id
+                ]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="visitsDs"
+                              class="com.haulmont.petclinic.entity.Visit"
+                              view="_local">
+            <query>
+                <![CDATA[
+                select e from cubapetclinic$Visit e
+                where e.pet.id = :ds$petsDs.id
+                ]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout spacing="true">
-        <vbox spacing="true">
-            <groupBox caption="Owner Information"
-                      spacing="true">
-                <grid spacing="true"
+    <layout expand="detailsBox"
+            margin="true">
+        <groupBox caption="Owner Information"
+                  outerMargin="true"
+                  spacing="true">
+            <grid spacing="true"
+                  width="100%">
+                <columns count="2"/>
+                <rows>
+                    <row>
+                        <label id="ownerLabel"
+                               align="MIDDLE_LEFT"
+                               value="Name"/>
+                        <label id="ownerValue"/>
+                    </row>
+                    <row>
+                        <label id="addressLabel"
+                               align="MIDDLE_LEFT"
+                               value="Address"/>
+                        <label id="addressValue"
+                               align="MIDDLE_LEFT"
+                               datasource="ownerDs"
+                               property="address"/>
+                    </row>
+                    <row>
+                        <label id="cityLabel"
+                               align="MIDDLE_LEFT"
+                               value="City"/>
+                        <label id="cityValue"
+                               align="MIDDLE_LEFT"
+                               datasource="ownerDs"
+                               property="city"/>
+                    </row>
+                    <row>
+                        <label id="phoneLabel"
+                               align="MIDDLE_LEFT"
+                               value="Telephone"/>
+                        <label id="phoneValue"
+                               align="MIDDLE_LEFT"
+                               datasource="ownerDs"
+                               property="telephone"/>
+                    </row>
+                    <row>
+                        <buttonsPanel>
+                            <button id="editOwnerBtn"
+                                    caption="Edit Owner"
+                                    invoke="onEditOwnerBtnClick"/>
+                            <button id="addPetCaption"
+                                    caption="Add New Pet"
+                                    invoke="onAddPetCaptionClick"/>
+                        </buttonsPanel>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+        <hbox id="detailsBox"
+              spacing="true"
+              width="100%">
+            <dataGrid id="petGrid"
+                      columnsCollapsingAllowed="false"
+                      datasource="petsDs"
+                      height="100%"
+                      stylename="pet-grid"
                       width="100%">
-                    <columns count="2"/>
-                    <rows>
-                        <row>
-                            <label id="ownerLabel"
-                                   align="MIDDLE_LEFT"
-                                   value="Name"/>
-                            <label id="ownerValue"
-                                   datasource="ownerDs"
-                                   property="firstName"/>
-                        </row>
-                        <row>
-                            <label id="addressLabel"
-                                   align="MIDDLE_LEFT"
-                                   value="Address"/>
-                            <label id="addressValue"
-                                   align="MIDDLE_LEFT"
-                                   datasource="ownerDs"
-                                   property="address"/>
-                        </row>
-                        <row>
-                            <label id="cityLabel"
-                                   align="MIDDLE_LEFT"
-                                   value="City"/>
-                            <label id="cityValue"
-                                   align="MIDDLE_LEFT"
-                                   datasource="ownerDs"
-                                   property="city"/>
-                        </row>
-                        <row>
-                            <label id="phoneLabel"
-                                   align="MIDDLE_LEFT"
-                                   value="Telephone"/>
-                            <label id="phoneValue"
-                                   align="MIDDLE_LEFT"
-                                   datasource="ownerDs"
-                                   property="telephone"/>
-                        </row>
-                    </rows>
-                </grid>
-            </groupBox>
-        </vbox>
+                <columns>
+                    <column id="petData"/>
+                </columns>
+            </dataGrid>
+            <vbox id="visitsBox"
+                  expand="visitsGrid"
+                  height="100%"
+                  spacing="true">
+                <dataGrid id="visitsGrid"
+                          datasource="visitsDs"
+                          width="100%">
+                    <columns>
+                        <column property="date"/>
+                        <column property="description"/>
+                    </columns>
+                </dataGrid>
+                <buttonsPanel width="100%">
+                    <linkButton id="editPetLink"
+                                caption="Edit Pet"
+                                invoke="onEditPetLinkClick"/>
+                    <linkButton id="addVisitLink"
+                                caption="Add Visit"
+                                invoke="onAddVisitLinkClick"/>
+                </buttonsPanel>
+            </vbox>
+        </hbox>
     </layout>
 </window>

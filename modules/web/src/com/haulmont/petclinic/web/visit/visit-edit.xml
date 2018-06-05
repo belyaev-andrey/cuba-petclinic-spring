@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.petclinic.web.visit.VisitEdit"
+        datasource="visitDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.petclinic.web.visit">
+    <dsContext>
+        <datasource id="visitDs"
+                    class="com.haulmont.petclinic.entity.Visit"
+                    view="visit-edit"/>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="600"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="visitDs">
+            <column width="250px">
+                <field editable="false"
+                       property="pet"/>
+                <field property="date"/>
+                <field property="description"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

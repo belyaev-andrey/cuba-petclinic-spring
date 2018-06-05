@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.petclinic.web.pet.PetEdit"
+        datasource="petDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.petclinic.web.pet">
+    <dsContext>
+        <datasource id="petDs"
+                    class="com.haulmont.petclinic.entity.Pet"
+                    view="pet-create"/>
+        <collectionDatasource id="typesDs"
+                              class="com.haulmont.petclinic.entity.PetType"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from cubapetclinic$PetType e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="AUTO"
+                width="600"/>
+    <layout expand="windowActions"
+            margin="true"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="petDs">
+            <column width="250px">
+                <field editable="false"
+                       property="owner"/>
+                <field property="name"/>
+                <field property="birthDate"/>
+                <field optionsDatasource="typesDs"
+                       property="type"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
