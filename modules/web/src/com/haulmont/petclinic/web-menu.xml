@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
-    <menu id="application-cubapetclinic"
-          insertBefore="administration">
-        <item screen="cubapetclinic$Owner.browse"/>
-    </menu>
+    <item screen="cubapetclinic$Owner.browse"/>
+    <item screen="cubapetclinic$Vet.browse"/>
 </menu-config>

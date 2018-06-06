@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.haulmont.petclinic.web.vet.VetBrowse"
+        focusComponent="vetsTable"
+        lookupComponent="vetsTable"
+        messagesPack="com.haulmont.petclinic.web.vet">
+    <dsContext>
+        <collectionDatasource id="vetsDs"
+                              class="com.haulmont.petclinic.entity.Vet"
+                              view="vet-specialities-view">
+            <query>
+                <![CDATA[select e from cubapetclinic$Vet e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="buttonsPanel"
+            spacing="true">
+        <table id="vetsTable"
+               columnControlVisible="false"
+               contextMenuEnabled="false"
+               reorderingAllowed="false"
+               responsive="true"
+               settingsEnabled="false"
+               width="100%">
+            <columns>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="specialities"
+                        generator="generateSpecialitiesCell"/>
+            </columns>
+            <rows datasource="vetsDs"/>
+            <rowsCount/>
+        </table>
+        <buttonsPanel id="buttonsPanel">
+            <linkButton id="xmlDownload"
+                        caption="View as XML"
+                        invoke="onXmlDownloadClick"/>
+            <linkButton id="jsonDownload"
+                        caption="View as JSON"
+                        invoke="onJsonDownloadClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

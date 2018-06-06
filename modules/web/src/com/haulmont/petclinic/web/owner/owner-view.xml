@@ -100,7 +100,7 @@ where e.owner.id = :ds$ownerDs.id
                 </columns>
             </dataGrid>
             <vbox id="visitsBox"
-                  expand="visitsGrid"
+                  expand="buttonsPanel"
                   height="100%"
                   spacing="true">
                 <dataGrid id="visitsGrid"
@@ -111,7 +111,8 @@ where e.owner.id = :ds$ownerDs.id
                         <column property="description"/>
                     </columns>
                 </dataGrid>
-                <buttonsPanel width="100%">
+                <buttonsPanel id="buttonsPanel"
+                              width="100%">
                     <linkButton id="editPetLink"
                                 caption="Edit Pet"
                                 invoke="onEditPetLinkClick"/>

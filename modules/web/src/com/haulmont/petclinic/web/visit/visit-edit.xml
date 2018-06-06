@@ -9,17 +9,49 @@
         <datasource id="visitDs"
                     class="com.haulmont.petclinic.entity.Visit"
                     view="visit-edit"/>
+        <collectionDatasource id="visitsDs"
+                              class="com.haulmont.petclinic.entity.Visit"
+                              view="_local">
+            <query>
+                <![CDATA[select e from cubapetclinic$Visit e where 
+e.pet.id = :ds$visitDs.pet.id]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="petsDs"
+                              class="com.haulmont.petclinic.entity.Pet"
+                              view="pet-with-owner">
+            <query>
+                <![CDATA[select e from cubapetclinic$Pet e
+where e.id = :ds$visitDs.pet.id]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode forceDialog="true"
-                height="AUTO"
-                width="600"/>
-    <layout expand="windowActions"
+                height="600px"
+                width="600px"/>
+    <layout expand="visitGrid"
             spacing="true">
+        <table id="petGrid"
+               columnControlVisible="false"
+               contextMenuEnabled="false"
+               height="65px"
+               reorderingAllowed="false"
+               settingsEnabled="false"
+               showSelection="false"
+               sortable="false"
+               width="100%">
+            <columns>
+                <column id="name"/>
+                <column id="birthDate"/>
+                <column id="type"/>
+                <column id="owner"/>
+            </columns>
+            <rows datasource="petsDs"/>
+        </table>
         <fieldGroup id="fieldGroup"
+                    align="TOP_CENTER"
                     datasource="visitDs">
             <column width="250px">
-                <field editable="false"
-                       property="pet"/>
                 <field property="date"/>
                 <field property="description"
                        rows="5"/>
@@ -27,5 +59,14 @@
         </fieldGroup>
         <frame id="windowActions"
                screen="editWindowActions"/>
+        <dataGrid id="visitGrid"
+                  caption="Previous Visits"
+                  datasource="visitsDs"
+                  width="100%">
+            <columns>
+                <column property="date"/>
+                <column property="description"/>
+            </columns>
+        </dataGrid>
     </layout>
 </window>

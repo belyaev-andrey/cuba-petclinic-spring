@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamePattern("Vet %s %s |firstName,lastName")
@@ -36,8 +37,8 @@ public class Vet extends Person {
         return specialities;
     }
 
-
-    public String getFullName(){
-        return String.format("%s %s", getFirstName(), getLastName());
+    public String getSpecialitiesNames() {
+        return specialities.stream().map(Speciality::getName).collect(Collectors.joining(", "));
     }
+
 }
