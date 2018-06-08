@@ -18,10 +18,10 @@ public class VetServiceBean implements VetService {
     @Override
     @Cacheable("vets")
     public Collection<Vet> findAll() {
-        LoadContext<Vet> vets = LoadContext.create(Vet.class)
+        LoadContext<Vet> vetCtx = LoadContext.create(Vet.class)
                 .setQuery(LoadContext.createQuery("select v from cubapetclinic$Vet v"))
                 .setView("vet-specialities-view");
-        return dataManager.loadList(vets);
+        return dataManager.loadList(vetCtx);
     }
 
 }

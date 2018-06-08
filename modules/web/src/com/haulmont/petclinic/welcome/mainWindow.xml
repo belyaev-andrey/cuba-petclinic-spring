@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.haulmont.cuba.web.app.mainwindow.AppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="foldersSplit">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <image id="petsImage">
+                        <theme path="pets.png"/>
+                    </image>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
+    </layout>
+</window>

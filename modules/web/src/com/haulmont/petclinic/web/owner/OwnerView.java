@@ -42,6 +42,8 @@ public class OwnerView extends AbstractEditor<Owner> {
     public void init(Map<String, Object> params) {
         super.init(params);
 
+        setFocusComponent(petGrid.getId());
+
         ownerDs.addItemChangeListener(e -> {
             Owner item = e.getItem();
             ownerValue.setValue(item != null ? item.getFullName() : null);

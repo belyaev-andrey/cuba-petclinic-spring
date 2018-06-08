@@ -10,14 +10,8 @@
                   ref="cuba_ServerSelector"/>
         <property name="remoteServices">
             <map>
-                <entry key="cubapetclinic_OwnerService"
-                       value="com.haulmont.petclinic.service.OwnerService"/>
-                <entry key="cubapetclinic_PetService"
-                       value="com.haulmont.petclinic.service.PetService"/>
                 <entry key="cubapetclinic_VetService"
                        value="com.haulmont.petclinic.service.VetService"/>
-                <entry key="cubapetclinic_VisitService"
-                       value="com.haulmont.petclinic.service.VisitService"/>
                 <entry key="cubapetclinic_EntityXmlExportService"
                        value="com.haulmont.petclinic.service.EntityJsonXmlExportService"/>
             </map>

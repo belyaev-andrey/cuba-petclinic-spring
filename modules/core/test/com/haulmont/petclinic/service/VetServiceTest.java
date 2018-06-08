@@ -6,16 +6,12 @@ import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.petclinic.CubapetclinicTestContainer;
 import com.haulmont.petclinic.entity.Vet;
-import com.haulmont.petclinic.entity.Visit;
-import com.haulmont.petclinic.service.VetService;
-import com.haulmont.petclinic.service.VisitService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
 import java.util.Collection;
-import java.util.List;
 
 public class VetServiceTest {
 

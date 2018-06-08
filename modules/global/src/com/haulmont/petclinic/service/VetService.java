@@ -4,7 +4,6 @@ package com.haulmont.petclinic.service;
 import com.haulmont.petclinic.entity.Vet;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface VetService {
     String NAME = "cubapetclinic_VetService";

@@ -13,4 +13,6 @@
             template="com/haulmont/petclinic/web/visit/visit-edit.xml"/>
     <screen id="cubapetclinic$Vet.browse"
             template="com/haulmont/petclinic/web/vet/vet-browse.xml"/>
+    <screen id="mainWindow"
+            template="com/haulmont/petclinic/welcome/mainWindow.xml"/>
 </screen-config>
