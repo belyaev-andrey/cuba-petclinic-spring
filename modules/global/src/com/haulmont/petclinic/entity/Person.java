@@ -1,6 +1,6 @@
 package com.haulmont.petclinic.entity;
 
-import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
+import com.haulmont.cuba.core.entity.BaseIntegerIdEntity;
 import com.haulmont.cuba.core.entity.Creatable;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.entity.Updatable;
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @MappedSuperclass
-public class Person extends BaseIntIdentityIdEntity
+public class Person extends BaseIntegerIdEntity
         implements Versioned, SoftDelete, Updatable, Creatable {
     private static final long serialVersionUID = 4193533661985379122L;
 
@@ -32,7 +32,7 @@ public class Person extends BaseIntIdentityIdEntity
     protected String createdBy;
 
     @Version
-    @Column(name = "VERSION", nullable = false, columnDefinition = "integer not null default 1")
+    @Column(name = "VERSION", columnDefinition = "integer not null default 1")
     protected Integer version;
 
     @Column(name = "UPDATE_TS")

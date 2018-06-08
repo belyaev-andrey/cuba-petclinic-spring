@@ -1,28 +1,27 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.Date;
+import com.haulmont.cuba.core.entity.BaseIntegerIdEntity;
+import com.haulmont.cuba.core.entity.Creatable;
+import com.haulmont.cuba.core.entity.SoftDelete;
+import com.haulmont.cuba.core.entity.Updatable;
+import com.haulmont.cuba.core.entity.Versioned;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
-import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
-import com.haulmont.cuba.core.entity.Versioned;
-import com.haulmont.cuba.core.entity.SoftDelete;
-import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @Table(name = "CUBAPETCLINIC_VISIT")
 @Entity(name = "cubapetclinic$Visit")
-public class Visit extends BaseIntIdentityIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
+public class Visit extends BaseIntegerIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
     private static final long serialVersionUID = -7772772507404867667L;
 
     @Temporal(TemporalType.TIMESTAMP)

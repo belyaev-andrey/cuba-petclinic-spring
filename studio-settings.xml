@@ -8,4 +8,7 @@
         <functionality id="newFkConstraintNaming"
                        state="ENABLE"/>
     </functionalitySettings>
+    <settings>
+        <showInfoOutdatedScheme>false</showInfoOutdatedScheme>
+    </settings>
 </studio>

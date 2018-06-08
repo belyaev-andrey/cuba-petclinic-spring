@@ -1,24 +1,21 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import com.haulmont.chile.core.annotations.Composition;
-import java.util.Date;
+
+import javax.annotation.Nullable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
-import com.haulmont.cuba.core.entity.Versioned;
-import com.haulmont.cuba.core.entity.SoftDelete;
-import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
-import javax.persistence.ManyToOne;
+import java.util.Date;
 import java.util.List;
-import javax.persistence.OneToMany;
-import javax.persistence.Index;
 
 @Table(name = "CUBAPETCLINIC_PET", indexes = {
     @Index(name = "IDX_CUBAPETCLINIC_PET", columnList = "NAME")
@@ -51,7 +48,6 @@ public class Pet extends NamedEntity {
         return visits;
     }
 
-
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
@@ -60,11 +56,11 @@ public class Pet extends NamedEntity {
         return owner;
     }
 
-
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
+    @Nullable
     public Date getBirthDate() {
         return birthDate;
     }
@@ -73,6 +69,7 @@ public class Pet extends NamedEntity {
         this.type = type;
     }
 
+    @Nullable
     public PetType getType() {
         return type;
     }

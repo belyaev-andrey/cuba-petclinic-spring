@@ -1,19 +1,19 @@
 package com.haulmont.petclinic.entity;
 
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import com.haulmont.cuba.core.entity.BaseIntIdentityIdEntity;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
-import javax.persistence.Version;
-import com.haulmont.cuba.core.entity.Versioned;
+import com.haulmont.cuba.core.entity.BaseIntegerIdEntity;
+import com.haulmont.cuba.core.entity.Creatable;
 import com.haulmont.cuba.core.entity.SoftDelete;
 import com.haulmont.cuba.core.entity.Updatable;
-import com.haulmont.cuba.core.entity.Creatable;
+import com.haulmont.cuba.core.entity.Versioned;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @MappedSuperclass
-public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
+public class NamedEntity extends BaseIntegerIdEntity implements Versioned, SoftDelete, Updatable, Creatable {
     private static final long serialVersionUID = 3471875190195059470L;
 
     @NotNull
@@ -27,7 +27,7 @@ public class NamedEntity extends BaseIntIdentityIdEntity implements Versioned, S
     protected String createdBy;
 
     @Version
-    @Column(name = "VERSION", nullable = false, columnDefinition = "integer not null default 1")
+    @Column(name = "VERSION", columnDefinition = "integer not null default 1")
     protected Integer version;
 
     @Column(name = "UPDATE_TS")

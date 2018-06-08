@@ -31,7 +31,7 @@ where e.owner.id = :ds$ownerDs.id
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="detailsBox"
+    <layout expand="petsBox"
             margin="true">
         <groupBox caption="Owner Information"
                   outerMargin="true"
@@ -86,41 +86,50 @@ where e.owner.id = :ds$ownerDs.id
                 </rows>
             </grid>
         </groupBox>
-        <hbox id="detailsBox"
-              spacing="true"
-              width="100%">
-            <dataGrid id="petGrid"
-                      columnsCollapsingAllowed="false"
-                      datasource="petsDs"
-                      height="100%"
-                      stylename="pet-grid"
-                      width="100%">
-                <columns>
-                    <column id="petData"/>
-                </columns>
-            </dataGrid>
-            <vbox id="visitsBox"
-                  expand="buttonsPanel"
-                  height="100%"
+        <groupBox id="petsBox"
+                  caption="Pets and Visits"
                   spacing="true">
-                <dataGrid id="visitsGrid"
-                          datasource="visitsDs"
+            <hbox id="detailsBox"
+                  height="100%"
+                  spacing="true"
+                  width="100%">
+                <dataGrid id="petGrid"
+                          columnsCollapsingAllowed="false"
+                          datasource="petsDs"
+                          headerVisible="false"
+                          height="100%"
+                          stylename="pet-grid"
                           width="100%">
                     <columns>
-                        <column property="date"/>
-                        <column property="description"/>
+                        <column id="petData"
+                                caption="Pet Data"/>
                     </columns>
                 </dataGrid>
-                <buttonsPanel id="buttonsPanel"
+                <vbox id="visitsBox"
+                      expand="buttonsPanel"
+                      height="100%"
+                      spacing="true">
+                    <dataGrid id="visitsGrid"
+                              datasource="visitsDs"
                               width="100%">
-                    <linkButton id="editPetLink"
-                                caption="Edit Pet"
-                                invoke="onEditPetLinkClick"/>
-                    <linkButton id="addVisitLink"
-                                caption="Add Visit"
-                                invoke="onAddVisitLinkClick"/>
-                </buttonsPanel>
-            </vbox>
-        </hbox>
+                        <columns>
+                            <column caption="Visit Date"
+                                    property="date"/>
+                            <column caption="Description"
+                                    property="description"/>
+                        </columns>
+                    </dataGrid>
+                    <buttonsPanel id="buttonsPanel"
+                                  width="100%">
+                        <linkButton id="editPetLink"
+                                    caption="Edit Pet"
+                                    invoke="onEditPetLinkClick"/>
+                        <linkButton id="addVisitLink"
+                                    caption="Add Visit"
+                                    invoke="onAddVisitLinkClick"/>
+                    </buttonsPanel>
+                </vbox>
+            </hbox>
+        </groupBox>
     </layout>
 </window>

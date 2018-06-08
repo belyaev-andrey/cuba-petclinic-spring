@@ -64,6 +64,7 @@ public class OwnerBrowse extends AbstractLookup {
         });
 
         DataGrid.ClickableTextRenderer renderer = ownersTable.createRenderer(DataGrid.ClickableTextRenderer.class);
+
         renderer.setRendererClickListener(event -> {
             Action action = ownersTable.getAction("details");
             if (action != null) {
@@ -82,7 +83,9 @@ public class OwnerBrowse extends AbstractLookup {
         public void actionPerform(Component component) {
             Entity selected = target.getSingleSelected();
             if (selected != null) {
-                openEditor(target.getDatasource().getMetaClass().toString()+".view", selected, WindowManager.OpenType.THIS_TAB);
+                openEditor(target.getDatasource().getMetaClass().toString()+".view", selected, WindowManager.OpenType.THIS_TAB).addCloseListener(l -> {
+                    target.getDatasource().refresh();
+                });
             }
         }
     }

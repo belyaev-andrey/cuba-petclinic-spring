@@ -1,23 +1,23 @@
 <Context>
     <!-- Database connection -->
-    <Resource driverClassName="com.mysql.jdbc.Driver"
+    <Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"
               maxIdle="2"
               maxTotal="20"
               maxWaitMillis="5000"
               name="jdbc/CubaDS"
-              password="pw"
+              password=""
               type="javax.sql.DataSource"
-              url="jdbc:mysql://localhost/cubapetclinic?useSSL=false&amp;allowMultiQueries=true"
-              username="root"/>
+              url="jdbc:hsqldb:hsql://localhost/cubapetclinic2"
+              username="sa"/>
     <!-- Switch off session serialization -->
     <Manager pathname=""/>
-    <!--<Resource driverClassName="org.hsqldb.jdbc.JDBCDriver"
+    <!--<Resource driverClassName="com.mysql.jdbc.Driver"
           maxIdle="2"
           maxTotal="20"
           maxWaitMillis="5000"
           name="jdbc/CubaDS"
-          password=""
+          password="pw"
           type="javax.sql.DataSource"
-          url="jdbc:hsqldb:hsql://localhost/cubapetclinic"
-          username="sa"/>-->
+          url="jdbc:mysql://localhost/cubapetclinic?useSSL=false&amp;allowMultiQueries=true"
+          username="root"/>-->
 </Context>
