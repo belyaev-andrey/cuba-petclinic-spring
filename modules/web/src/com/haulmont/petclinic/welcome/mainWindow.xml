@@ -6,14 +6,50 @@
     <dialogMode height="600"
                 width="800"/>
     <layout>
+        <hbox id="titleBar">
+            <main:ftsField id="ftsField"
+                           visible="false"/>
+            <main:timeZoneIndicator id="timeZoneIndicator"
+                                    visible="false"/>
+            <hbox id="mainButtonsBox">
+                <main:newWindowButton id="newWindowButton"
+                                      visible="false"/>
+            </hbox>
+        </hbox>
         <split id="foldersSplit">
+            <main:foldersPane id="foldersPane"
+                              visible="false"/>
             <main:workArea id="workArea">
                 <main:initialLayout>
-                    <image id="petsImage">
-                        <theme path="pets.png"/>
-                    </image>
+                    <vbox id="vLayout"
+                          height="100%"
+                          spacing="true">
+                        <groupBox id="welcomeBox"
+                                  caption="Welcome"
+                                  height="100%"
+                                  settingsEnabled="false"
+                                  spacing="true">
+                            <image id="petsImage"
+                                   align="MIDDLE_CENTER">
+                                <theme path="pets.png"/>
+                            </image>
+                        </groupBox>
+                    </vbox>
                 </main:initialLayout>
             </main:workArea>
         </split>
+        <hbox id="bottomLogoBox"
+              align="MIDDLE_CENTER"
+              spacing="true"
+              width="100%">
+            <image align="TOP_RIGHT">
+                <theme path="spring-pivotal-logo.png"/>
+            </image>
+            <label id="poweredByLink"
+                   align="BOTTOM_LEFT"
+                   htmlEnabled="true"
+                   stylename="c-powered-by"
+                   value="mainMsg://cuba.poweredBy"/>
+        </hbox>
     </layout>
 </window>
