@@ -6,11 +6,56 @@
 .halo {
   // include auto-generated app components SCSS
   @include app_components;
-  
+
   @include com_haulmont_petclinic-halo-ext;
+
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+    font-family: "montserratregular", sans-serif;
+    color: $spring-light-grey;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 10px;
+    font-family: "montserratregular", sans-serif;
+    color: $spring-light-grey;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: $spring-light-grey;
+  }
+
+  strong {
+    font-weight: 700;
+    font-family: "montserratregular", sans-serif;
+  }
 
   .pet-grid .v-grid-body .v-grid-cell {
     height: 78px;
   }
+
+  .v-menubar-menuitem-caption {
+    font-family: "montserratregular", sans-serif;
+    text-transform: uppercase;
+  }
+
+
+  .c-groupbox-caption-text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 10px;
+    font-family: "montserratregular", sans-serif;
+    color: $spring-brown;
+  }
+
 
 }

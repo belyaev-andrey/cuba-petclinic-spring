@@ -84,16 +84,26 @@ public class OwnerView extends AbstractEditor<Owner> {
     }
 
     public void onEditPetLinkClick() {
-        openEditor(petsDs.getItem(), WindowManager.OpenType.DIALOG, Collections.emptyMap(), petsDs).addCloseWithCommitListener(() -> {
-            petsDs.commit();
-        });
+        Pet pet = petsDs.getItem();
+        if (pet != null) {
+            openEditor(pet, WindowManager.OpenType.DIALOG, Collections.emptyMap(), petsDs).addCloseWithCommitListener(() -> {
+                petsDs.commit();
+            });
+        } else {
+            showNotification("Please select a pet first", NotificationType.HUMANIZED);
+        }
     }
 
     public void onAddVisitLinkClick() {
-        Visit visit = metadata.create(Visit.class);
-        visit.setPet(petsDs.getItem());
-        openEditor(visit, WindowManager.OpenType.DIALOG, Collections.emptyMap(), visitsDs).addCloseWithCommitListener(() -> {
-            visitsDs.commit();
-        });
+        Pet pet = petsDs.getItem();
+        if (pet != null) {
+            Visit visit = metadata.create(Visit.class);
+            visit.setPet(pet);
+            openEditor(visit, WindowManager.OpenType.DIALOG, Collections.emptyMap(), visitsDs).addCloseWithCommitListener(() -> {
+                visitsDs.commit();
+            });
+        } else {
+            showNotification("Please select a pet first", NotificationType.HUMANIZED);
+        }
     }
 }

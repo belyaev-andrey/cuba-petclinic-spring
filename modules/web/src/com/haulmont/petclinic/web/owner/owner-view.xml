@@ -13,8 +13,10 @@
                               view="pet-view">
             <query>
                 <![CDATA[
+
                 select e from cubapetclinic$Pet e
 where e.owner.id = :ds$ownerDs.id
+
                 ]]>
             </query>
         </collectionDatasource>
@@ -23,8 +25,10 @@ where e.owner.id = :ds$ownerDs.id
                               view="_local">
             <query>
                 <![CDATA[
+
                 select e from cubapetclinic$Visit e
                 where e.pet.id = :ds$petsDs.id
+
                 ]]>
             </query>
         </collectionDatasource>
@@ -77,10 +81,12 @@ where e.owner.id = :ds$ownerDs.id
                         <buttonsPanel>
                             <button id="editOwnerBtn"
                                     caption="Edit Owner"
-                                    invoke="onEditOwnerBtnClick"/>
+                                    invoke="onEditOwnerBtnClick"
+                                    stylename="friendly"/>
                             <button id="addPetCaption"
                                     caption="Add New Pet"
-                                    invoke="onAddPetCaptionClick"/>
+                                    invoke="onAddPetCaptionClick"
+                                    stylename="friendly"/>
                         </buttonsPanel>
                     </row>
                 </rows>
