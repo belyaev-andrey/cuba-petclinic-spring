@@ -19,13 +19,18 @@
                     datasource="ownerDs"
                     width="400px">
             <column width="250px">
-                <field property="firstName"/>
-                <field property="lastName"/>
-                <field property="address"
+                <field caption="msg://firstName"
+                       property="firstName"/>
+                <field caption="msg://lastName"
+                       property="lastName"/>
+                <field caption="msg://address"
+                       property="address"
                        rows="5"/>
-                <field property="city"
+                <field caption="msg://city"
+                       property="city"
                        rows="5"/>
-                <field property="telephone"
+                <field caption="msg://telephone"
+                       property="telephone"
                        rows="5"/>
             </column>
         </fieldGroup>

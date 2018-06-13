@@ -22,7 +22,9 @@
             spacing="true">
         <filter id="filter"
                 applyTo="ownersTable"
-                datasource="ownersDs">
+                datasource="ownersDs"
+                folderActionsEnabled="false"
+                margin="true">
             <properties include=".*"/>
         </filter>
         <dataGrid id="ownersTable"
@@ -39,16 +41,19 @@
             </actions>
             <columns>
                 <column id="fullName"
-                        caption="Full Name"
+                        caption="msg://fullName"
                         editable="false"/>
                 <column id="address"
+                        caption="msg://address"
                         property="address"/>
                 <column id="city"
+                        caption="msg://city"
                         property="city"/>
                 <column id="telephone"
+                        caption="msg://telephone"
                         property="telephone"/>
                 <column id="petNames"
-                        caption="Pets"
+                        caption="msg://pets"
                         editable="false"/>
             </columns>
             <rowsCount/>

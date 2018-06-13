@@ -2,6 +2,7 @@
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         class="com.haulmont.cuba.web.app.mainwindow.AppMainWindow"
         extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        messagesPack="com.haulmont.petclinic.welcome"
         xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
     <dialogMode height="600"
                 width="800"/>
@@ -25,7 +26,7 @@
                           height="100%"
                           spacing="true">
                         <groupBox id="welcomeBox"
-                                  caption="Welcome"
+                                  caption="msg://welcome"
                                   height="100%"
                                   settingsEnabled="false"
                                   spacing="true">

@@ -26,9 +26,12 @@
                settingsEnabled="false"
                width="100%">
             <columns>
-                <column id="firstName"/>
-                <column id="lastName"/>
+                <column id="firstName"
+                        caption="msg://firstName"/>
+                <column id="lastName"
+                        caption="msg://lastName"/>
                 <column id="specialities"
+                        caption="msg://specialities"
                         generator="generateSpecialitiesCell"/>
             </columns>
             <rows datasource="vetsDs"/>
@@ -36,10 +39,10 @@
         </table>
         <buttonsPanel id="buttonsPanel">
             <linkButton id="xmlDownload"
-                        caption="View as XML"
+                        caption="msg://viewAsXml"
                         invoke="onXmlDownloadClick"/>
             <linkButton id="jsonDownload"
-                        caption="View as JSON"
+                        caption="msg://viewAsJson"
                         invoke="onJsonDownloadClick"/>
         </buttonsPanel>
     </layout>

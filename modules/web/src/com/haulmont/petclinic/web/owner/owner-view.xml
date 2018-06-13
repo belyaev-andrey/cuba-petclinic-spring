@@ -47,13 +47,13 @@ where e.owner.id = :ds$ownerDs.id
                     <row>
                         <label id="ownerLabel"
                                align="MIDDLE_LEFT"
-                               value="Name"/>
+                               value="msg://fullName"/>
                         <label id="ownerValue"/>
                     </row>
                     <row>
                         <label id="addressLabel"
                                align="MIDDLE_LEFT"
-                               value="Address"/>
+                               value="msg://address"/>
                         <label id="addressValue"
                                align="MIDDLE_LEFT"
                                datasource="ownerDs"
@@ -62,7 +62,7 @@ where e.owner.id = :ds$ownerDs.id
                     <row>
                         <label id="cityLabel"
                                align="MIDDLE_LEFT"
-                               value="City"/>
+                               value="msg://city"/>
                         <label id="cityValue"
                                align="MIDDLE_LEFT"
                                datasource="ownerDs"
@@ -71,7 +71,7 @@ where e.owner.id = :ds$ownerDs.id
                     <row>
                         <label id="phoneLabel"
                                align="MIDDLE_LEFT"
-                               value="Telephone"/>
+                               value="msg://telephone"/>
                         <label id="phoneValue"
                                align="MIDDLE_LEFT"
                                datasource="ownerDs"
@@ -80,11 +80,11 @@ where e.owner.id = :ds$ownerDs.id
                     <row>
                         <buttonsPanel>
                             <button id="editOwnerBtn"
-                                    caption="Edit Owner"
+                                    caption="msg://editOwner"
                                     invoke="onEditOwnerBtnClick"
                                     stylename="friendly"/>
                             <button id="addPetCaption"
-                                    caption="Add New Pet"
+                                    caption="msg://addNewPet"
                                     invoke="onAddPetCaptionClick"
                                     stylename="friendly"/>
                         </buttonsPanel>
@@ -93,7 +93,7 @@ where e.owner.id = :ds$ownerDs.id
             </grid>
         </groupBox>
         <groupBox id="petsBox"
-                  caption="Pets and Visits"
+                  caption="msg://petsAndVisits"
                   spacing="true">
             <hbox id="detailsBox"
                   height="100%"
@@ -119,19 +119,19 @@ where e.owner.id = :ds$ownerDs.id
                               datasource="visitsDs"
                               width="100%">
                         <columns>
-                            <column caption="Visit Date"
+                            <column caption="msg://visitDate"
                                     property="date"/>
-                            <column caption="Description"
+                            <column caption="msg://description"
                                     property="description"/>
                         </columns>
                     </dataGrid>
                     <buttonsPanel id="buttonsPanel"
                                   width="100%">
                         <linkButton id="editPetLink"
-                                    caption="Edit Pet"
+                                    caption="msg://editPet"
                                     invoke="onEditPetLinkClick"/>
                         <linkButton id="addVisitLink"
-                                    caption="Add Visit"
+                                    caption="msg://addVisit"
                                     invoke="onAddVisitLinkClick"/>
                     </buttonsPanel>
                 </vbox>

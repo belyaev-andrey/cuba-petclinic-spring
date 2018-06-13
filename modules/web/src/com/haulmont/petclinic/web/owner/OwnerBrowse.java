@@ -9,15 +9,11 @@ import com.haulmont.cuba.gui.components.DataGrid;
 import com.haulmont.cuba.gui.components.ListComponent;
 import com.haulmont.cuba.gui.components.actions.ItemTrackingAction;
 import com.haulmont.petclinic.entity.Owner;
-import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import java.util.Map;
 
 public class OwnerBrowse extends AbstractLookup {
-
-    @Inject
-    private Logger log;
 
     @Inject
     private DataGrid<Owner> ownersTable;
@@ -75,7 +71,7 @@ public class OwnerBrowse extends AbstractLookup {
     }
 
     protected class DetailsAction extends ItemTrackingAction {
-        public DetailsAction(ListComponent target, String id) {
+        DetailsAction(ListComponent target, String id) {
             super(target, id);
         }
 

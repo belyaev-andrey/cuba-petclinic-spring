@@ -26,11 +26,15 @@
         <fieldGroup id="fieldGroup"
                     datasource="petDs">
             <column width="250px">
-                <field editable="false"
+                <field caption="msg://owner"
+                       editable="false"
                        property="owner"/>
-                <field property="name"/>
-                <field property="birthDate"/>
-                <field optionsDatasource="typesDs"
+                <field caption="msg://name"
+                       property="name"/>
+                <field caption="msg://birthDate"
+                       property="birthDate"/>
+                <field caption="msg://type"
+                       optionsDatasource="typesDs"
                        property="type"/>
             </column>
         </fieldGroup>
