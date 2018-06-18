@@ -58,7 +58,9 @@ public class OwnerBrowse extends AbstractLookup {
 
         renderer.setRendererClickListener(event -> {
             Action action = ownersTable.getAction("details");
-            if (action != null) {
+            Entity selected = ownersTable.getDatasource().getItem(event.getItemId());
+            if (action != null && selected != null) {
+                event.getSource().setSelected(selected);
                 action.actionPerform(event.getSource());
             }
         });
