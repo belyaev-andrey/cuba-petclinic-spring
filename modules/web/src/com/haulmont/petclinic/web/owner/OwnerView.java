@@ -41,28 +41,23 @@ public class OwnerView extends AbstractEditor<Owner> {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-
         setFocusComponent(petGrid.getId());
-
         ownerDs.addItemChangeListener(e -> {
             Owner item = e.getItem();
             ownerValue.setValue(item != null ? item.getFullName() : null);
         });
-
         DataGrid.Column petData = petGrid.addGeneratedColumn("petData", new DataGrid.ColumnGenerator<Pet, String>() {
             @Override
             public String getValue(DataGrid.ColumnGeneratorEvent<Pet> event) {
                 Pet pet = event.getItem();
                 PetType petType = pet.getType();
                 Date bd = pet.getBirthDate();
-
                 return "<table>" +
-                        "<tr><td>Name</td><td>" + pet.getName() + "</td></tr>" +
-                        "<tr><td>Birth Date</td><td>" + (bd == null? "N/A" : DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(pet.getBirthDate())) + "</td></tr>" +
-                        "<tr><td>Type</td><td>" + (petType != null ? petType.getName() : "") + "</td></tr>" +
+                        "<tr><td>"+getMessage("pet.name")+"</td><td>" + pet.getName() + "</td></tr>" +
+                        "<tr><td>"+getMessage("pet.birthDate")+"</td><td>" + (bd == null? "N/A" : DateFormatUtils.ISO_8601_EXTENDED_DATE_FORMAT.format(pet.getBirthDate())) + "</td></tr>" +
+                        "<tr><td>"+getMessage("pet.type")+"</td><td>" + (petType != null ? petType.getName() : "") + "</td></tr>" +
                         "</table>";
             }
-
             @Override
             public Class<String> getType() {
                 return String.class;

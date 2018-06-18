@@ -1,9 +1,6 @@
 package com.haulmont.petclinic.service;
 
-import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.global.AppBeans;
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.petclinic.CubapetclinicTestContainer;
 import com.haulmont.petclinic.entity.Vet;
 import org.junit.Assert;
@@ -18,16 +15,10 @@ public class VetServiceTest {
     @ClassRule
     public static CubapetclinicTestContainer cont = CubapetclinicTestContainer.Common.INSTANCE;
 
-    private Metadata metadata;
-    private Persistence persistence;
-    private DataManager dataManager;
     private VetService vetService;
 
     @Before
-    public void setUp() throws Exception {
-        metadata = cont.metadata();
-        persistence = cont.persistence();
-        dataManager = AppBeans.get(DataManager.class);
+    public void setUp() {
         vetService = AppBeans.get(VetService.class);
     }
 

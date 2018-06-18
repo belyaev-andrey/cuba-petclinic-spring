@@ -21,18 +21,14 @@ public class OwnerBrowse extends AbstractLookup {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-
         ownersTable.addAction(new DetailsAction(ownersTable, "details"));
-
         setUpFullNameColumn();
-
         setUpPetNamesColumn();
 
     }
 
     private void setUpPetNamesColumn() {
         ownersTable.addGeneratedColumn("petNames", new DataGrid.ColumnGenerator<Owner, String>() {
-
             @Override
             public String getValue(DataGrid.ColumnGeneratorEvent<Owner> event) {
                 return event.getItem().getPetNames();
@@ -47,7 +43,6 @@ public class OwnerBrowse extends AbstractLookup {
 
     private void setUpFullNameColumn() {
         DataGrid.Column fullName = ownersTable.addGeneratedColumn("fullName", new DataGrid.ColumnGenerator<Owner, String>() {
-
             @Override
             public String getValue(DataGrid.ColumnGeneratorEvent<Owner> event) {
                 return event.getItem().getFullName();
@@ -79,9 +74,10 @@ public class OwnerBrowse extends AbstractLookup {
         public void actionPerform(Component component) {
             Entity selected = target.getSingleSelected();
             if (selected != null) {
-                openEditor(target.getDatasource().getMetaClass().toString()+".view", selected, WindowManager.OpenType.THIS_TAB).addCloseListener(l -> {
-                    target.getDatasource().refresh();
-                });
+                openEditor(target.getDatasource().getMetaClass().toString() + ".view", selected, WindowManager.OpenType.THIS_TAB)
+                        .addCloseListener(listener -> {
+                            target.getDatasource().refresh();
+                        });
             }
         }
     }
