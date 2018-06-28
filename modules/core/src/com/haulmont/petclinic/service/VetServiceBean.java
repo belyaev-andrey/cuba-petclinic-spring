@@ -1,7 +1,6 @@
 package com.haulmont.petclinic.service;
 
 import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.petclinic.entity.Vet;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -18,10 +17,10 @@ public class VetServiceBean implements VetService {
     @Override
     @Cacheable("vets")
     public Collection<Vet> findAll() {
-        LoadContext<Vet> vetCtx = LoadContext.create(Vet.class)
-                .setQuery(LoadContext.createQuery("select v from cubapetclinic$Vet v"))
-                .setView("vet-specialities-view");
-        return dataManager.loadList(vetCtx);
+        return dataManager.load(Vet.class)
+                .query("select v from cubapetclinic$Vet v")
+                .view("vet-specialities-view")
+                .list();
     }
 
 }
